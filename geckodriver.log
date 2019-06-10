@@ -894,3 +894,21 @@ console.error: BroadcastService:
 
 
 (/usr/lib/firefox/firefox:10940): dconf-WARNING **: 00:42:26.027: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+1560167403163	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.jLfrczQsNONy"
+*** You are running in headless mode.
+1560167403521	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1560167403521	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1560167403521	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1560167405946	Marionette	INFO	Listening on port 45865
+1560167406004	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: http://%(server)s/dummy/blocklist//buckets/monitor/collections/changes/records?_expected=%221559865839282%22 is not a valid URL..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:203:13
+
+
+(/usr/lib/firefox/firefox:13214): dconf-WARNING **: 07:50:27.891: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+JavaScript error: https://fw.adsafeprotected.com/rjss/www.googletagservices.com/233708/32329437/dcm/dcmads.js, line 883: NS_ERROR_FAILURE: 

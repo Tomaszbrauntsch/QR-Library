@@ -8,28 +8,31 @@ from oauth2client.service_account import ServiceAccountCredentials
 #QR code generator
 import pyqrcode
 
-options = webdriver.FirefoxOptions()
+
+options = webdriver.FirefoxOptions() #Initializing the webdriver to run headless
 options.add_argument('-headless')
  
 driver = webdriver.Firefox(firefox_options=options)
 
 driver.get('https://grabify.link/track/SFP9YQ')
-spans =[]
+
+#Assigning the official value
+spans =[]	
 document = driver.find_elements_by_tag_name('span')
 for i in document :
     if (i.get_attribute("innerHTML") != "null") :
     	spans.append(i.get_attribute("innerHTML"))
 value = spans[34]
-spans = []
+spans = [] #Reseting the list
 valueplusone = int(value) + 1
-print ("Ready to Scan")
 
 #QR code generated
 qrurl = pyqrcode.create('https://grabify.link/WXAUYS')
 qrurl.svg('textqr.svg', scale=8)
 print(qrurl.terminal(quiet_zone=1))
+print ("Ready to Scan")
 
-# Waiting for user to scan it
+# Waiting for user to scan the qr code it
 while True:
 	spans = []
 	document = driver.find_elements_by_tag_name('span')
@@ -51,4 +54,4 @@ gc = gspread.authorize(credentials)
 
 ss = gc.open("Testingspreadsheet")
 ws = ss.worksheet("Sheet1")
-a1update = ws.update_acell('A1', 'You scanned the code!')
+a1update = ws.update_acell('A1', 'This is cell A1')
