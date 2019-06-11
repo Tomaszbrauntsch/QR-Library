@@ -12,14 +12,14 @@ import imaplib
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-#If using Firefox use this
+#If using Firefox use this | Geckodriver
 '''options = webdriver.FirefoxOptions()
 options.add_argument('-headless')
 driver = webdriver.Firefox(firefox_options=options)
 '''
 #
 
-#If using Chromium use this
+#If using Chromium use this | Chromium driver
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(chrome_options = chrome_options, executable_path='/usr/bin/chromedriver')
