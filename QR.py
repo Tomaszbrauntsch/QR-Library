@@ -2,6 +2,7 @@
 #Selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 #QR code generator
 import pyqrcode
 #email recieving/reading
@@ -11,11 +12,23 @@ import imaplib
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+#If using Firefox use this
+'''options = webdriver.FirefoxOptions()
+options.add_argument('-headless')
+driver = webdriver.Firefox(firefox_options=options)
+'''
+#
 
-options = webdriver.FirefoxOptions() #Initializing the webdriver to run headless
+#If using Chromium use this
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(chrome_options = chrome_options, executable_path='/usr/bin/chromedriver')
+#
+
+'''options = webdriver.FirefoxOptions() #Initializing the webdriver to run headless
 options.add_argument('-headless')
  
-driver = webdriver.Firefox(firefox_options=options)
+driver = webdriver.Firefox(firefox_options=options)'''
 
 driver.get('https://grabify.link/track/SFP9YQ')
 
@@ -44,14 +57,14 @@ while True:
 			spans.append(i.get_attribute("innerHTML"))
 	value = spans[34]
 	driver.refresh()
-	if int(value) == int(valueplusone):
+	if int(value) >= int(valueplusone):
 		break
 
 #
 #imaplib
 #
-username = 'xxxx@gmail.com'
-password = 'xxxx'
+username = 'qrtesting1234567890@gmail.com'
+password = 'testingQR'
 
 mail = imaplib.IMAP4_SSL("imap.gmail.com")
 mail.login(username, password)
@@ -92,6 +105,16 @@ gc = gspread.authorize(credentials)
 
 ss = gc.open("Testingspreadsheet")
 ws = ss.worksheet("Sheet1")
-a1update = ws.update_acell('A2', name_person)
-a1update = ws.update_acell('B2', grade_school)
-a1update = ws.update_acell('C2', computer_value)
+cell_list = ws.range('A2:A5')
+cell_count = 2
+for i in cell_list:
+	cell_value = "A" + str(cell_count)
+	if ws.acell(cell_value).value == "":
+		acellval = cell_value
+		bcellval = "B" + str(cell_count)
+		ccellval = "C" + str(cell_count)
+		Namecellupdate = ws.update_acell(acellval, name_person)
+		Gradecellupdate = ws.update_acell(bcellval, grade_school)
+		Computercellupdate = ws.update_acell(ccellval, computer_value)
+		break
+	cell_count = int(cell_count) + 1
