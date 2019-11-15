@@ -49,7 +49,7 @@ print(qrurl.terminal(quiet_zone=1))
 print ("Ready to Scan")
 
 # Waiting for user to scan the qr code it
-while True:
+while (int(value) < int(valueplusone)):
 	spans = []
 	document = driver.find_elements_by_tag_name('span')
 	for i in document :
@@ -57,8 +57,6 @@ while True:
 			spans.append(i.get_attribute("innerHTML"))
 	value = spans[34]
 	driver.refresh()
-	if int(value) >= int(valueplusone):
-		break
 
 #
 #imaplib
