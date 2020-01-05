@@ -113,11 +113,11 @@ def addInfo_window():
             scope = ['https://spreadsheets.google.com/feeds',
                      'https://www.googleapis.com/auth/drive']
 
-            credentials = ServiceAccountCredentials.from_json_keyfile_name('qr-library.json', scope)
+            credentials = ServiceAccountCredentials.from_json_keyfile_name('QR-Library.json', scope)
 
             gc = gspread.authorize(credentials)
 
-            ss = gc.open("Testingspreadsheet")
+            ss = gc.open("Database")
             ws = ss.worksheet("Sheet1")
             cell_list = ws.range('A2:A20')
             cell_count = 2
@@ -205,11 +205,11 @@ def removeInfo_window():
             scope = ['https://spreadsheets.google.com/feeds',
                      'https://www.googleapis.com/auth/drive']
 
-            credentials = ServiceAccountCredentials.from_json_keyfile_name('qr-library.json', scope)
+            credentials = ServiceAccountCredentials.from_json_keyfile_name('QR-Library.json', scope)
 
             gc = gspread.authorize(credentials)
 
-            ss = gc.open("Testingspreadsheet")
+            ss = gc.open("Database")
             ws = ss.worksheet("Sheet1")
             cell_list = ws.range('A2:A20')
             cell_count = 2
