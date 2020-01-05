@@ -1,5 +1,5 @@
 # QR-Library
-Developed a logging system to tell you, what person has what, e.g, a library logging a person with book</br>
+Developed a logging system to tell you, what person has what, e.g, a library logging a person with what book they have</br>
 ## Prerequisties
 The items are needed to be installed are in the prerequisites.txt </br>Install the driver needed which is firefox in our case, then put it in your path (/usr/local/bin <- Linux)
 ## Modification
