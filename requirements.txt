@@ -1,5 +1,3 @@
-selenium
-geckodriver
+Flask
 gspread
 oauth2client
-pyqrcode

@@ -1,0 +1,5 @@
+selenium
+geckodriver
+gspread
+oauth2client
+pyqrcode
