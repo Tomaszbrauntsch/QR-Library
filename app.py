@@ -24,7 +24,7 @@ def reading_vals():
     #session is used to pass values between routes
     if (str(request.args.get('fname')) != "None"):
         session['fName'] = str(request.args.get('fname'))
-    if (str(request.args.get('lName')) != "None"):
+    if (str(request.args.get('lname')) != "None"):
         session['lName'] = str(request.args.get('lname'))
     if (str(request.args.get('cname')) != "None"):
         session['cName'] = str(request.args.get('cname'))
