@@ -1,8 +1,12 @@
 #FOR LAUNCH
 #export FLASK_APP=app
+#export FLASK_RUN_HOST=ipaddress
 #flask run --host=192.168.50.189 <- local host
 #make sure the count is one to one with the current amount of entities
 #https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask
+#
+#find amount of cells
+#
 from flask import Flask, request, session
 #google sheets
 import gspread
@@ -24,7 +28,7 @@ def reading_vals():
     #session is used to pass values between routes
     if (str(request.args.get('fname')) != "None"):
         session['fName'] = str(request.args.get('fname'))
-    if (str(request.args.get('lName')) != "None"):
+    if (str(request.args.get('lname')) != "None"):
         session['lName'] = str(request.args.get('lname'))
     if (str(request.args.get('cname')) != "None"):
         session['cName'] = str(request.args.get('cname'))
@@ -69,14 +73,11 @@ def googlesheets(fName, lName, cName, delete):
             ws.update_acell("D1", str(int(cell_count) + 1)) #updates to the first avaliable blank cell
         else:
             temp_cell = 2 #first name on the list
-            rName = ws.acell("A" + str(temp_cell)).value
-            while(fName != rName): #looks if userentry name is found, to remove the correct entry
+            searchC = ws.acell("C" + str(temp_cell)).value #compName value at C[x] in DB
+            while(cName != searchC):
+                #looks if user-entry is found, to remove the correct entry
                 temp_cell += 1
-                rName = ws.acell("A" + str(temp_cell)).value
-            #updates selected cell with blanks
-            ws.update_acell("A" + str(temp_cell), "")
-            ws.update_acell("B" + str(temp_cell), "")
-            ws.update_acell("C" + str(temp_cell), "")
+                searchC = ws.acell("C" + str(temp_cell)).value #compName value at C[x] in DB
             #moves all entries up to fill in blank
             for x in range(temp_cell, (int(cell_count) + 1)): #start, end
                 ws.update_acell("A" + str(x), ws.acell("A" + str(x + 1)).value)
