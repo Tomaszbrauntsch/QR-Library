@@ -2,11 +2,9 @@
 #export FLASK_APP=app
 #export FLASK_RUN_HOST=ipaddress
 #flask run --host=192.168.50.189 <- local host
-#make sure the count is one to one with the current amount of entities
+#**make sure the count is one to one with the current amount of entities
 #https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask
-#
-#find amount of cells
-#
+
 from flask import Flask, request, session
 #google sheets
 import gspread
@@ -15,10 +13,9 @@ app = Flask(__name__)
 app.secret_key="abc" #needed to use session[]
 
 #fix hosting ip app.run
-#http://127.0.0.1:5000/input?fname=joe&lname=mama
-#http://127.0.0.1:5000/input?cname=computer001
-#http://127.0.0.1:5000/done
-#192.168.50.100
+#http://127.0.0.1:5000/input?fname=joe&lname=mama <- example of using fname and lname
+#http://127.0.0.1:5000/input?cname=computer001 <- example of using cname
+
 @app.route('/')
 def home_page():
     return 'nothing here'
